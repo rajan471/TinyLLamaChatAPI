@@ -11,13 +11,13 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application
-# COPY . .
+COPY . .
 
 # Download the Hugging Face model
 RUN python -c "from transformers import pipeline; pipeline('text-generation', model='TinyLlama/TinyLlama-1.1B-Chat-v1.0')"
 
 # Make port 5000 available to the world outside this container
-EXPOSE 5000
+EXPOSE 5001
 
 # Run the application
 CMD ["python", "app.py"] 
